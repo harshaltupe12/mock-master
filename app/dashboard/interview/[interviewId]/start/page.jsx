@@ -5,6 +5,7 @@ import { eq } from "drizzle-orm";
 import React, { useEffect, useState } from "react";
 import QuestionSection from "./_component/QuestionSection";
 import RecordAnswerSection from "./_component/RecordAnswerSection";
+import { Button } from "@/components/ui/button";
 
 function StartInterview({ params }) {
   const [interviewData, setInterviewData] = useState();
@@ -38,7 +39,16 @@ function StartInterview({ params }) {
         )}
 
         {/* Webcam / Audio */}
-        <RecordAnswerSection/>
+        <RecordAnswerSection
+          mockInterviewQuestion={mockInterviewQuestion}
+          activeQuestionIndex={activeQuestionIndex}
+          interviewData={interviewData}
+        />
+      </div>
+      <div className="flex md:px-0 px-4 justify-center md:justify-end gap-2 md:gap-6 md:mr-10 mb-10">
+        {activeQuestionIndex > 0 && <Button onClick={()=>setActiveQuestionIndex(activeQuestionIndex-1)}>Previous Question</Button>}
+        {activeQuestionIndex!=mockInterviewQuestion?.length-1 &&<Button onClick={()=>setActiveQuestionIndex(activeQuestionIndex+1)}>Next Question</Button>}
+        {activeQuestionIndex==mockInterviewQuestion?.length-1 && <Button>End Interview</Button>}
       </div>
     </div>
   );

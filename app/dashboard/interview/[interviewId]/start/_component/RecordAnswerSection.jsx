@@ -28,6 +28,7 @@ function RecordAnswerSection({
     results,
     startSpeechToText,
     stopSpeechToText,
+    setResults,
   } = useSpeechToText({
     continuous: true,
     useLegacyResults: false,
@@ -86,11 +87,13 @@ function RecordAnswerSection({
     });
     if (resp) {
       toast("User message recorded successfully.");
+      setUserAnswer("");
+      setResults([]);
     }
-    setUserAnswer("");
+    setResults([]);
     setLoading(false);
   };
-
+  
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="mt-10 flex flex-col justify-center items-center bg-black rounded-lg p-5">

@@ -30,7 +30,7 @@ export default function Home() {
               <ArrowRight />
             </Button>
           </Link>
-          <Link href="https://youtu.be/ZmdzCmsYO1c" target="_blank"> {/* Change with actual Video link later*/}
+          <Link href="https://www.youtube.com/watch?v=ZYSA0zlDamM" target="_blank"> {/* Change with actual Video link later*/}
             <Button variant="outline" className="flex gap-2 w-full">
               <Video />
               Watch Tutorial

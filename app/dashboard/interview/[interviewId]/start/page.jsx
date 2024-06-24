@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import QuestionSection from "./_component/QuestionSection";
 import RecordAnswerSection from "./_component/RecordAnswerSection";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 function StartInterview({ params }) {
   const [interviewData, setInterviewData] = useState();
@@ -48,7 +49,10 @@ function StartInterview({ params }) {
       <div className="flex md:px-0 px-4 justify-center md:justify-end gap-2 md:gap-6 md:mr-10 mb-10">
         {activeQuestionIndex > 0 && <Button onClick={()=>setActiveQuestionIndex(activeQuestionIndex-1)}>Previous Question</Button>}
         {activeQuestionIndex!=mockInterviewQuestion?.length-1 &&<Button onClick={()=>setActiveQuestionIndex(activeQuestionIndex+1)}>Next Question</Button>}
-        {activeQuestionIndex==mockInterviewQuestion?.length-1 && <Button>End Interview</Button>}
+        {activeQuestionIndex==mockInterviewQuestion?.length-1 && 
+        <Link href={'/dashboard/interview/'+interviewData?.mockId+'/feedback'}>
+        <Button>End Interview</Button>
+        </Link>}
       </div>
     </div>
   );
